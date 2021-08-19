@@ -1,0 +1,55 @@
+<p>login works!</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+
+<form [formGroup]="loginForm">
+  <!-- *ngIf="showaddress === true" -->
+<div class="row mt-4 mb-4">
+  <div class="col-lg-6 col-md-6 col-sm-12" >
+      <div class="card card-user">
+
+        <div class="card-body signup-card">
+          <h3 class="signup-head">Sign Up</h3>
+            <div class="row">
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label class="signup-label text-muted">Email</label>
+                  <input type="text" class="form-control input-borderclr" placeholder="Email" [email]="true" value=""formControlName="email" [ngClass]="{ 'is-invalid': submitted && loginfrm.email.errors }">
+                  <div *ngIf="submitted && loginfrm.email.errors" class="invalid-feedback">
+                    <div *ngIf="loginfrm.email.errors.required">This field is required</div>
+                    <div *ngIf="loginfrm.email.errors.pattern">Please, Enter valid email.</div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 pr-1">
+                <div class="form-group">
+                  <label class="signup-label text-muted">Name <i class="fa fa-pencil"></i></label>
+                   <input type="text" class="form-control input-borderclr" placeholder="Name" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginfrm.password.errors }">
+                  <div *ngIf="submitted && loginfrm.password.errors" class="invalid-feedback">
+                    <div *ngIf="loginfrm.password.errors.required">This field is required</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row mt-4">
+              <div class="col-md-4 col-lg-4 col-sm-12 mx-auto">
+                <button type="submit" class="btn-send mb-3" (click)="login()"><i class="fa" [ngClass]="{'fa-spin fa-spinner': loading}"></i>Login</button>
+           </div>
+           </div>
+           <div class="row mt-3">
+            <div class="col-md-1 col-lg-1 col-sm-12 col-12 mx-auto" style="text-align: center;">
+            <img src="../../../assets/img/google.png">
+            </div>
+         </div>
+         <div class="row mt-3">
+          <div class="col-md-4 col-lg-4 col-sm-12 col-12 mx-auto" style="text-align: center;">
+            <span>forgot password</span>
+         <span style="font-size: 13px;padding: 0px 0px 0px 13px;" class="text-muted">Not registered yet? <span style="color: #d9117d;cursor: pointer; font-weight: 800;" (click)="signUp()">SignUp</span></span>
+          </div>
+       </div>
+        </div>
+      </div>
+    </div>
+</div>
+</form>
