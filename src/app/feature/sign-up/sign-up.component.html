@@ -43,11 +43,6 @@
                   [phoneValidation]="true" [separateDialCode]="separateDialCode"
                   [numberFormat]="PhoneNumberFormat.National" name="phone" formControlName="phone" >
                 </ngx-intl-tel-input>
-                     <!-- <div *ngIf="submitted && paymntfrm.phone.errors" class="invalid-feedback">
-                    <div *ngIf="paymntfrm.phone.errors.required">This field is required</div>
-                    <div *ngIf="(paymntfrm.phone.errors.pattern || phoneerror === true) && this.signupForm.value.phone ">Please, Enter valid Phone Number.</div>
-
-                  </div> -->
                   <div *ngIf="signupForm.value.phone==null && submitted">
                     <div style="color: red;">This field is required</div>
 
@@ -69,21 +64,31 @@
               <div class="col-md-6 pl-1">
                 <div class="form-group">
                   <label class="signup-label text-muted" style="margin-left: 10px;">Password</label>
-                  <input type="text" class="form-control input-borderclr" placeholder="Phone Number" value=""formControlName="password" [ngClass]="{ 'is-invalid': submitted && paymntfrm.password.errors }">
+                  <input type="{{showPassword ? 'text' : 'password' }}"  class="form-control form-control-sm input-borderclr" placeholder="Phone Number" value=""formControlName="password" [ngClass]="{ 'is-invalid': submitted && paymntfrm.password.errors }">
+                  <a (click)="togglePassword()" class="eye-b">
+                    <i class="{{showPassword ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i>
+                   </a>
                   <div *ngIf="submitted && paymntfrm.password.errors" class="invalid-feedback">
                     <div *ngIf="paymntfrm.password.errors.required">This field is required</div>
                   </div>
+
                 </div>
               </div>
               <div class="col-md-6 pl-1">
                 <div class="form-group">
                   <label class="signup-label text-muted">Retype Password</label>
-                  <input type="text" style="margin-left: 10px;" class="form-control input-borderclr" placeholder="Address" value=""formControlName="retype_password" [ngClass]="{ 'is-invalid': submitted && paymntfrm.retype_password.errors }">
+                  <input type="password" type="{{showPasswordRetype ? 'text' : 'password' }}" style="margin-left: 10px;" class="form-control input-borderclr" (input)="checkPassword()" placeholder="Address" value=""formControlName="retype_password" [ngClass]="{ 'is-invalid': submitted && paymntfrm.retype_password.errors }">
+                  <a (click)="toggleRetypePassword()" class="eye-b">
+                    <i class="{{showPasswordRetype ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></i>
+                   </a>
                   <div *ngIf="submitted && paymntfrm.retype_password.errors" class="invalid-feedback">
                     <div *ngIf="paymntfrm.retype_password.errors.required">This field is required</div>
                   </div>
+                    <span style="color: red;" *ngIf="passwordcheck == true">Incorrect password</span>
+
                 </div>
               </div>
+              <span *ngIf="duplicatemailorphone" style="color: red;">Phone number or Email already taken</span>
             </div>
             <div class="row mt-4">
               <div class="col-md-4 col-lg-4 col-sm-12 mx-auto">

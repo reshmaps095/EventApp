@@ -23,13 +23,17 @@
               </div>
               <div class="col-md-6 pr-1">
                 <div class="form-group">
-                  <label class="signup-label text-muted">Name <i class="fa fa-pencil"></i></label>
+                  <label class="signup-label text-muted">Password <i class="fa fa-pencil"></i></label>
                    <input type="text" class="form-control input-borderclr" placeholder="Name" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginfrm.password.errors }">
                   <div *ngIf="submitted && loginfrm.password.errors" class="invalid-feedback">
                     <div *ngIf="loginfrm.password.errors.required">This field is required</div>
                   </div>
                 </div>
               </div>
+
+            </div>
+            <div class="row">
+              <span style="color: red;"   *ngIf="invalidMessage"> Invalid Username or password</span>
 
             </div>
             <div class="row mt-4">

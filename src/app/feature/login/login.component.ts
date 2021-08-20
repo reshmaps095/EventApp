@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean;
   loading: boolean;
   message: any;
+  invalidMessage: boolean;
 
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private apiService:ApiService) {
     this.loginForm = this.fb.group({
@@ -44,10 +45,12 @@ export class LoginComponent implements OnInit {
          this.loading = false;
          this.message = res.message;
          console.log(this.message)
+         this.invalidMessage = false;
          this.router.navigateByUrl('/sign-up')
 
         } else {
-
+          console.log("ssssssss")
+         this.invalidMessage = true;
        }
      }, error => {
      })

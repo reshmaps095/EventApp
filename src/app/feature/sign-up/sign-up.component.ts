@@ -20,6 +20,10 @@ export class SignUpComponent implements OnInit {
 	CountryISO = CountryISO;
   PhoneNumberFormat = PhoneNumberFormat;
   preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
+  passwordcheck: boolean;
+  duplicatemailorphone: boolean;
+  showPassword: boolean = false;
+  showPasswordRetype: boolean = false;
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private apiService:ApiService) {
     this.signupForm = this.fb.group({
       name:['', [Validators.required]] ,
@@ -43,8 +47,27 @@ export class SignUpComponent implements OnInit {
       this.phoneerror = false;
     }
   }
+  checkPassword(){
+    let submitFormVal =  this.signupForm.value
+    if(submitFormVal.password === submitFormVal.retype_password){
+      this.passwordcheck = false;
+      console.log("llllllll")
+    }
+    else{
+      this.passwordcheck = true;
+      console.log("pppppppp")
+
+    }
+
+  }
+   togglePassword() {
+    this.showPassword = !this.showPassword;
+  }
+  toggleRetypePassword() {
+    this.showPasswordRetype = !this.showPasswordRetype;
+  }
+
   signUp(){
-    $('#successModal').modal('show');
     this.submitted = true;
     const formData = new FormData();
     if (this.signupForm.invalid) {
@@ -64,20 +87,31 @@ export class SignUpComponent implements OnInit {
     if(submitFormVal.password === submitFormVal.retype_password){
     this.apiService.signupUser(formData).subscribe((res:any)=>{
        if (res.success == 1) {
+        if(this.message = 'Phone number or Email already taken')
+        {
+          this.duplicatemailorphone = true;
+        }
+        else{
+         this.duplicatemailorphone = false;
+        }
          this.signupForm.reset();
          this.submitted = false;
          this.loading = false;
-         this.message = res.message;
+         this.passwordcheck = false;
          $('#successModal').modal('show');
 
-        } else {
-
+        } else  if (res.success == false)  {
+          this.message = res.message;
+          if(this.message = 'Phone number or Email already taken')
+          {
+            this.duplicatemailorphone = true;
+          }
+          else{
+           this.duplicatemailorphone = false;
+          }
        }
      }, error => {
      })
-    }
-    else{
-      console.log("error")
     }
   }
   loginUser(){
