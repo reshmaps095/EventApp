@@ -9,6 +9,7 @@ declare var $:any;
 
 })
 export class LandingPageComponent implements OnInit {
+  token:any;
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -84,6 +85,8 @@ export class LandingPageComponent implements OnInit {
   constructor(private router:Router) { }
 
   ngOnInit(): void {
+    this.token = localStorage.getItem('loginToken')
+    console.log(this.token)
   }
 gotoTop(){
   $('html, body').animate({ scrollTop: 0 }, 'fast');
@@ -99,5 +102,8 @@ previous(){
 }
 signUp(){
   this.router.navigateByUrl('/sign-up')
+}
+Login(){
+  this.router.navigateByUrl('/login')
 }
 }

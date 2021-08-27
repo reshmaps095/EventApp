@@ -1,5 +1,7 @@
 .signup-head{
+  padding: 20px 0px 0px 13px;
   font-weight: 900;
+  font-size: 29px;
 }
 .signup-label{
   font-size: 12px;
@@ -9,7 +11,6 @@
 }
 .signup-card{
   box-shadow: 0px 2px 4px 0px rgb(110 123 131);
-
 }
 .btn-send{
   width: 100%;
@@ -27,14 +28,15 @@
   padding-right: 36px;
   margin-right: 0;
   border-color: #d9117d;
-  width: 344px;
+  width: 262px;
   height: 37px;
+  border-radius: 4px;
 }
 ::ng-deep
   .iti {
     position: relative;
     display: inline-block;
-    margin-left: 10px;
+    /* margin-left: 10px; */
 
 }
 .payed-modal {
@@ -111,3 +113,255 @@
   top: 9px;
   right: 10px;
  }
+
+
+ /* Split the screen in half */
+.split {
+  height: 100%;
+  width: 65%;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: #f8fbfe;}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: #09094c;
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.h2-size{
+    color: white;
+    font-size: 56px;
+    font-weight: 700;
+}
+.p-size{
+  color: white;
+  font-size: 17px;
+}
+.first-img-slide{
+  position: absolute;
+  top: 9%;
+  left: 17%;
+}
+
+.first-img-slide img{
+  object-fit: cover;
+  border-radius: 100px;
+  width: 141px;
+  height: 133px;
+}
+
+.circle1 img{
+  width: 14%;
+  position: absolute;
+  top: 7%;
+  left: 16%;
+}
+.circle2 img{
+  width: 4%;
+  position: absolute;
+  top: 8%;
+  left: 32%;
+}
+.circle3 img{
+  width: 9%;
+  position: absolute;
+  top: 9%;
+  left: 50%;
+}
+.circle4 img{
+  width: 9%;
+  position: absolute;
+  top: 27%;
+  left: 73%;
+
+}
+.circle5 img{
+  width: 16%;
+  position: absolute;
+  top: 54%;
+  left: 73%;
+
+}
+.thrid-img-slide {
+  position: absolute;
+  top: 55%;
+  left: 76%;
+}
+
+.thrid-img-slide img{
+  object-fit: cover;
+  border-radius: 100px;
+  width: 143px;
+  height: 143px;
+}
+.circle6 img{
+  width: 16%;
+  position: absolute;
+  top: 72%;
+  left: 47%;
+}
+.second-img-slide {
+  position: absolute;
+  top: 72%;
+  left: 50%;
+}
+
+.second-img-slide img{
+  object-fit: cover;
+  border-radius: 100px;
+  width: 129px;
+  height: 129px;
+}
+.circle7 img{
+  position: absolute;
+  top: 84%;
+  left: 17%;
+}
+.eight-img-slide{
+  position: absolute;
+    top: 8%;
+    left: 84%;
+}
+
+.eight-img-slide img{
+  object-fit: cover;
+  border-radius: 100px;
+  width: 150px;
+  height: 150px;
+}
+
+.circle8 img{
+  width:16%;
+  position: absolute;
+  top: 8%;
+  left: 82%;
+}
+
+.sect-right{
+  max-height: 100vh;
+  min-height: 100vh;
+  background-color: #09094c;
+  position: relative;
+  /* overflow-y: hidden; */
+  overflow: hidden;
+}
+
+.left-sect{
+  background-color: #f8fbfe;
+}
+.field-icon {
+  float: left;
+  margin-left: 255px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+.field-icon-left {
+  float: left;
+  margin-left: 0px;
+  margin-top: -25px;
+  position: relative;
+  z-index: 2;
+}
+.inpt-padding{
+  padding-left: 30px;
+}
+.div-box{
+  margin: 0px 10px 0px 0px;
+}
+.fa-icon-size{
+  font-size: 14px;
+  padding: 0px 0px 0px 10px;
+}
+@media screen and (max-width: 767px) {
+  .mob-hide{
+    display: none;
+  }
+  .split{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+.signup-card{
+  position: absolute;
+  width: 378px;
+  z-index: 99999;
+  background-color: white;
+  border-radius: 1px;
+
+}
+::ng-deep .iti input {
+  position: relative;
+  z-index: 0;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-right: 36px;
+  margin-right: 0;
+  border-color: #d9117d;
+  width: 305px;
+  height: 37px;
+  border-radius: 4px;
+}
+.address-width{
+  width: 305px;
+}
+}
+@media screen and (max-width: 991px) {
+  .mob-hide{
+    display: none;
+  }
+}
+@media screen and (min-width:768px) and (max-width: 991px) {
+  ::ng-deep .iti input {
+    position: relative;
+    z-index: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-right: 36px;
+    margin-right: 0;
+    border-color: #d9117d;
+    width: 338px;
+    height: 37px;
+    border-radius: 4px;
+  }
+}
+@media screen and (min-width: 991px) {
+.signup-card{
+  position: absolute;
+    margin-left: 28px;
+    width: 620px;
+    z-index: 99999;
+    top: 10%;
+    background-color: white;
+    border-radius: 10px;
+}
+}
+

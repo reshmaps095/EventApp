@@ -1,59 +1,126 @@
-<p>login works!</p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+<div class="row">
+  <div class="col-lg-4 left-sect ">
+    <div class="signup-card">
+      <form [formGroup]="loginForm">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12" >
+              <div class=" card-user">
+                <div class="card-body signup-card">
+                  <h3 class="signup-head">Login</h3>
+                    <div class="row" style="padding: 15px 0px 0px 0px;">
+                      <div class="col-md-6 pr-1">
+                        <div class="form-group">
 
-<form [formGroup]="loginForm">
-  <!-- *ngIf="showaddress === true" -->
-<div class="row mt-4 mb-4">
-  <div class="col-lg-6 col-md-6 col-sm-12" >
-      <div class="card card-user">
+                            <label class="signup-label text-muted">Email Address</label>
+                            <input type="text" class="form-control input-borderclr inpt-padding" placeholder="Email" [email]="true" value=""formControlName="email" [ngClass]="{ 'is-invalid': submitted && loginfrm.email.errors }">
+                            <span toggle="#password-field" class="fa fa-fw fa-envelope  field-icon-left toggle-password fa-icon-size"></span>
+                            <div *ngIf="submitted && loginfrm.email.errors" class="invalid-feedback">
+                              <div *ngIf="loginfrm.email.errors.required">This field is required</div>
+                              <div *ngIf="loginfrm.email.errors.pattern">Please, Enter valid email.</div>
 
-        <div class="card-body signup-card">
-          <h3 class="signup-head">Sign Up</h3>
-            <div class="row">
-              <div class="col-md-6 pr-1">
-                <div class="form-group">
-                  <label class="signup-label text-muted">Email</label>
-                  <input type="text" class="form-control input-borderclr" placeholder="Email" [email]="true" value=""formControlName="email" [ngClass]="{ 'is-invalid': submitted && loginfrm.email.errors }">
-                  <div *ngIf="submitted && loginfrm.email.errors" class="invalid-feedback">
-                    <div *ngIf="loginfrm.email.errors.required">This field is required</div>
-                    <div *ngIf="loginfrm.email.errors.pattern">Please, Enter valid email.</div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 pr-1">
+                        <div class="form-group">
+                          <label class="signup-label text-muted">Password </label>
+                          <input type="{{showPassword ? 'text' : 'password' }}"  class="form-control input-borderclr inpt-padding" placeholder="password" value=""formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginfrm.password.errors }">
+                          <span toggle="#password-field" (click)="togglePassword()"  class="fa fa-fw fa-eye field-icon-left toggle-password fa-icon-size {{showPassword ? 'fa fa-eye-slash' : 'fa fa-eye' }}"></span>
 
+                           <div *ngIf="submitted && loginfrm.password.errors" class="invalid-feedback">
+                            <div *ngIf="loginfrm.password.errors.required">This field is required</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6 col-lg-6 col-12">
+                        <div class="form-group mt-2">
+                          <input type="checkbox" (click)="rememberMe($event)" formControlName="rememberme" checked="true">
+                          <span  class="ml-2">Remember me?</span>
+                           </div>
+                      </div>
+                      <div class="col-md-6 col-lg-6 col-12">
+                        <div class="form-group mt-2">
+                          <span  class="ml-2">forgot password?</span>
+                           </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 mx-auto">
+                        <p *ngIf="invalidMessage" style="color: #dc3545;text-align: center;font-size: 16px;" >Invalid Username or password</p>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6 col-lg-6 col-sm-12 mx-auto">
+                        <button type="submit" class="btn-send mb-3" (click)="login()"><i class="fa" [ngClass]="{'fa-spin fa-spinner': loading}"></i>Login</button>
+                   </div>
+                   </div>
+
+                   <div class="row">
+                    <div class="col-md-1 col-lg-1 col-sm-12 col-12 mx-auto" style="text-align: center;">
+                    <img src="../../../assets/img/google.png" style="cursor: pointer;" (click)="authService.GoogleAuth()">
+                    </div>
+                 </div>
+                 <div class="row mt-3">
+                  <div class="col-md-6 col-lg-6 col-sm-12 col-12 mx-auto" style="text-align: center;">
+                 <span style="font-size: 13px;padding: 0px 0px 0px 13px;" class="text-muted">Not registered yet? <span style="color: #d9117d;cursor: pointer; font-weight: 800;" (click)="signUp()">Sign Up</span></span>
                   </div>
+               </div>
                 </div>
               </div>
-              <div class="col-md-6 pr-1">
-                <div class="form-group">
-                  <label class="signup-label text-muted">Password <i class="fa fa-pencil"></i></label>
-                   <input type="text" class="form-control input-borderclr" placeholder="Name" formControlName="password" [ngClass]="{ 'is-invalid': submitted && loginfrm.password.errors }">
-                  <div *ngIf="submitted && loginfrm.password.errors" class="invalid-feedback">
-                    <div *ngIf="loginfrm.password.errors.required">This field is required</div>
-                  </div>
-                </div>
-              </div>
-
             </div>
-            <div class="row">
-              <span style="color: red;"   *ngIf="invalidMessage"> Invalid Username or password</span>
-
-            </div>
-            <div class="row mt-4">
-              <div class="col-md-4 col-lg-4 col-sm-12 mx-auto">
-                <button type="submit" class="btn-send mb-3" (click)="login()"><i class="fa" [ngClass]="{'fa-spin fa-spinner': loading}"></i>Login</button>
-           </div>
-           </div>
-           <div class="row mt-3">
-            <div class="col-md-1 col-lg-1 col-sm-12 col-12 mx-auto" style="text-align: center;">
-            <img src="../../../assets/img/google.png">
-            </div>
-         </div>
-         <div class="row mt-3">
-          <div class="col-md-4 col-lg-4 col-sm-12 col-12 mx-auto" style="text-align: center;">
-            <span>forgot password</span>
-         <span style="font-size: 13px;padding: 0px 0px 0px 13px;" class="text-muted">Not registered yet? <span style="color: #d9117d;cursor: pointer; font-weight: 800;" (click)="signUp()">SignUp</span></span>
-          </div>
-       </div>
         </div>
-      </div>
+        </form>
     </div>
+  </div>
+  <div class="col-lg-8 sect-right mob-hide">
+    <div>
+     <div class="centered">
+       <h2 class="h2-size">Celebrate your events</h2>
+       <p class="p-size">We provide perfect online events for you.</p>
+     </div>
+     <div class="desk_view">
+       <div class="circle1">
+         <img src="assets/img/circle1.png" />
+       </div>
+       <div class="first-img-slide">
+         <img src="assets/img/banner-image06.png" />
+       </div>
+       <div class="circle2">
+         <img src="assets/img/circle2.png" />
+       </div>
+       <div class="circle3">
+         <img src="assets/img/circle3.png" />
+       </div>
+       <div class="circle4">
+         <img src="assets/img/circle4.png" />
+       </div>
+       <div class="circle5">
+         <img src="assets/img/circle5.png" />
+       </div>
+       <div class="thrid-img-slide">
+         <img src="assets/img/banner-image07.png" />
+       </div>
+       <div class="circle6">
+         <img src="assets/img/circle6.png" />
+       </div>
+       <div class="second-img-slide">
+         <img src="assets/img/banner-image05.png" />
+       </div>
+       <div class="circle7">
+         <img src="assets/img/circle7.png" />
+       </div>
+       <div class="circle8">
+         <img src="assets/img/circle8.png" />
+       </div>
+       <div class="eight-img-slide">
+         <img src="assets/img/banner-image02.png" />
+       </div>
+
+   </div>
+    </div>
+ </div>
 </div>
-</form>

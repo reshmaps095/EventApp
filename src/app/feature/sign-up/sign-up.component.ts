@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchCountryField, CountryISO, PhoneNumberFormat } from 'ngx-intl-tel-input';
+import { AuthService } from 'src/app/core/services/auth.service';
 declare var $:any;
 @Component({
   selector: 'app-sign-up',
@@ -24,7 +25,7 @@ export class SignUpComponent implements OnInit {
   duplicatemailorphone: boolean;
   showPassword: boolean = false;
   showPasswordRetype: boolean = false;
-  constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private apiService:ApiService) {
+  constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private apiService:ApiService,public authService: AuthService) {
     this.signupForm = this.fb.group({
       name:['', [Validators.required]] ,
       email: ['',[Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]],

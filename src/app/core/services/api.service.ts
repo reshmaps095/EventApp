@@ -22,6 +22,8 @@ export class ApiService {
   }
   loginUser(data){
     return this.http.post(this.BASE_URL + `user/login`,data)
-
+  }
+  loginWIthGoogle(data){
+    return this.http.post(this.BASE_URL + `user/social`,data)
   }
 }

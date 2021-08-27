@@ -1,0 +1,92 @@
+<div class="row mob-hide">
+  <div class="col-lg-12">
+    <div class="card card-desk">
+    <div class="row event-card">
+      <div class="col-lg-2 col-12">
+        <button type="button" class="btn btn-primary btn-lg sign-up-btn" (click)="openEventModal()">Create Event</button>
+        <!-- <img src="../../../assets/img/add.png"> -->
+      </div>
+      <div class="col-lg-1 col-12">
+        <img src="../../../assets/img/info.png" class="info-icon">
+      </div>
+      <div class="col-lg-9 col-12">
+        <form>
+          <div class="input-group no-border">
+            <input type="text" value="" class="form-control" placeholder="Search...">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span toggle="#password-field" class="fa fa-fw fa-search fa-xs field-icon-left toggle-password fa-icon-size"></span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="row desk-hide">
+  <div class="col-12">
+    <form>
+      <div class="input-group no-border">
+        <input type="text" value="" class="form-control" placeholder="Search...">
+        <div class="input-group-append">
+          <div class="input-group-text">
+            <span toggle="#password-field" class="fa fa-fw fa-search fa-xs field-icon-left toggle-password fa-icon-size"></span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-12">
+    <p>New Event</p>
+  </div>
+  <div class="col-12">
+    <div class="card card-mob">
+      <div class=" row event-card-mob">
+        <div class="col-2">
+          <img src="../../../assets/img/add.png">
+        </div>
+        <div class="col-6">
+          <p>Create a Event</p>
+        </div>
+        <div class="col-4">
+          <img src="../../../assets/img/info.png" class="info-mob">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade payed-modal" id="evntModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content" style="overflow: hidden;">
+      <!-- <div class="modal-header"> -->
+        <div class="row">
+          <div class="col-lg-10">
+            <h2 class="evntmodal-hd">Create New</h2>
+          </div>
+          <div class="col-lg-2">
+            <button type="button"  class="close btn-close1" data-dismiss="modal" aria-label="Close" (click)="closeEventModal()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        <hr style="color: white; border: 1 !important;">
+
+      <div class="modal-body">
+      <div class="row">
+        <div class="col-lg-4">
+          <h4 style="padding: 8px 0px 0px 0px;">Name</h4>
+          <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Name" formControlName="title"   [ngClass]="{ 'is-invalid': submitted && eventfrm.title.errors }" >
+        </div>
+        <div class="col-lg-4">
+          <h4 style="padding: 8px 0px 0px 0px;">Date</h4>
+          <input type="date" class="st-fd-tbox brdr-clr"  placeholder="Name" formControlName="date"   [ngClass]="{ 'is-invalid': submitted && eventfrm.date.errors }" >
+        </div>
+      </div>
+</div>
+</div>
+</div>
+</div>

@@ -1,0 +1,45 @@
+.sign-up-btn{
+  margin: 0px 184px 0px 0px;
+  width: 180px;
+  font-size: 15px;
+  height: 49px;
+  text-transform: none;
+  background-color: #d9117d;
+  border-color: #d9117d;
+  color: white;
+  font-weight: 700;
+
+}
+.event-card{
+  padding: 50px 50px 50px 50px;
+}
+.event-card-mob{
+  padding: 12px 4px 3px 14px;
+}
+.info-icon{
+  padding: 12px 0px 0px 0px;
+}
+.info-mob{
+  float: right;
+  padding: 4px 8px 0px 0px;
+}
+.field-icon-left {
+  float: left;
+  margin-left: 0px;
+  margin-top: 0px;
+  position: relative;
+  z-index: 2;
+}
+.card-mob{
+  border-radius: 10px
+}
+@media screen and (max-width: 991px) {
+.mob-hide{
+  display: none;
+}
+}
+@media screen and (min-width: 991px) {
+.desk-hide{
+  display: none;
+}
+}
